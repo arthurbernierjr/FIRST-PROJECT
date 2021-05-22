@@ -4,7 +4,7 @@ const correctField = document.querySelector('.correct');
 const wrongField1 = document.querySelector('.wrong1');
 const wrongField2 = document.querySelector('.wrong2');
 const wrongField3 = document.querySelector('.wrong3');
-
+const numberOfScore = document.querySelector('.score');
 const triviaBox = document.querySelectorAll('.trivia-box');
 const lossResult = document.querySelector('#player-loss')
 
@@ -152,11 +152,12 @@ let question18 = new Question(
 class Player{
   constructor(name, points)
 }
-player 1
-player 2
+
+BrooklynNets extends class Player
 
 
-// event listeners
+AtlantaHawks extends class Player
+
 
 
 // create an order of questions
@@ -183,7 +184,18 @@ let questionArray = [
 
 let questionTracker = [];
 
-//
+//// event listeners
+startGameButton.addEventListener('click', generateQuestion);
+correctField.addEventListener('click', playerChoice);
+wrongField1.addEventListener('click', playerOut);
+wrongField2.addEventListener('click', playerOut);
+wrongField3.addEventListener('click', playerOut);
+restartButton.addEventListener('click', restartGame);
+startGameButton.addEventListener('click', startGame);
+restartGame.addEventListener('click', restartGame);
+
+///// generate questions function
+
  generateTriviaQuestions: function(){
 let randomQuestionNumber = math.floor(Math.random() * question.Array.length);
 let currentQuestionNumber =randomQuestionNumber;
@@ -192,6 +204,9 @@ correctField.innerHTML = questionArray[currentQuestionNumber].correct;
 wrongField1.innerHTML = questionArray[currentQuestionNumber].wrong1;
 wrongField2.innerHTML = questionArray[currentQuestionNumber].wrong2;
 wrongField3.innerHTML = questionArray[currentQuestionNumber].wrong3;
+questionTracker.push(questionArray[currentQuestionNumber]);
+questionArray.splice(currentQuestionNumber, 1);
+
  }
 
 
@@ -202,13 +217,44 @@ wrongField3.innerHTML = questionArray[currentQuestionNumber].wrong3;
 // reset original question on replay
 
 // clock timer
-var startTimeInt = 20;
-var currentTimeInt = s
+var count = 20;
+var interval = setInterval(myTimer, 1000);
 
+  function myTimer(){
+    document.getElementById('count').innerHTML= sec + 'sec left';
+    count--;
+    if (count === -1){
+      stopInterval(interval);
+    alert('You are out of time!');
+  }
+}
 
 // if answer is correct
+function correctChoice (){
+  if (questionNumber == 1){
+    current = current +1;
+    console.log ('current =' +current);
+    question1();
+  }
+if (questionNumber == 2){
+  current = current +1;
+  console.log ('current =' +current);
+  question2();
+}
+gameOver();
+}
+function takeTrivia(){
+  pickQuestion();
+  checkCorrect();
+}
 
-// if answer is incorrect
+// if answer is incorrect// gameOver
+function gameOver(){
+  if (currentScore =< 21) {
+    console.log('currentScore');
+    alert('gameOver');
+  }
+}
 
 // random choice for player2
 
@@ -226,9 +272,38 @@ let showGameResults(player[] players){
 }
 
 // restart game
+function restartGame(){
+
+}
+
 
 // start game button
+function startGame(){
+onEvent('BrooklynNetsImage', "click", function()){
+  setScreen('Welcome');
+  music.play();
+  music.volume = 0.1;
+  resetTimer();
+  startTimer();
 
+}
+onEvent('AtlantaHawksImage', "click", function()){
+  setScreen('Welcome');
+  music.play();
+  music.volume = 0.1;
+  resetTimer();
+  startTimer();
+}
+}
 //play background music
+function playMusic(LineEvent event){
+  LineEvent.Type type = event.getType();
+  if (type == LineEvent.Type.Start){
+    system.out.printIn('playback started');
+  } else if (type == LineEvent.Type.Stop){
+    playCompleted = true;
+    System.out.printIn('Playback completed');
+  }
+}
 
 // finish game button
