@@ -1,25 +1,18 @@
 // global varialbles
-const questionField = document.querySelector('.question');
-// const correctField = document.querySelector('.correct');
-// const wrongField1 = document.querySelector('.wrong1');
-// const wrongField2 = document.querySelector('.wrong2');
-// const wrongField3 = document.querySelector('.wrong3');
+const questionContainer = document.querySelector('.question');
 const numberOfScore = document.querySelector('.score');
 const triviaBox = document.querySelectorAll('.trivia-box');
 const lossResult = document.querySelector('#player-loss')
 
 // question objects. reference to HTML
 
-const triviaBox = document.getElementById('trivia');
+const triviaBox = document.getElementById('trivia-box');
 const showGameResults =document.getElementById('results');
 const submitButton = document.getElementById('submit');
-
+submitButton.addEventListener('click', showGameResults);
 
 function buildTrivia(){}
 function showGameResults(){}
-
-submitButton.addEventListener('click', showGameResults);
-
 
 
 class Question {
@@ -30,7 +23,7 @@ class Question {
     this.correctChoice = correct
 
   }
-  // if chioce if correct gi ve 1 point
+  // if chioce if correct give 1 point
 }
 let question1 = new Question(
   'Before basketballs were invented in 1929, what kind of ball did peole use to play basketball with?'
@@ -55,7 +48,7 @@ let question3 = new Question(
   '5'
   '7'
   '8'
-  'as many as the referee wants'
+  '12'
 );
 correctChoice: '5'
 
@@ -93,7 +86,7 @@ let question7 = new Question(
   'Wilt Chamberlain'
   'Michael Jordan'
 );
-correctChoice:''
+correctChoice:'a'
 
  let question8 = new Question(
    'Which NBA player was nicknamed after a rifle?'
@@ -102,7 +95,7 @@ correctChoice:''
    'Dikembe Mutombo'
    'Giannis Antetokounmpo'
  );
- correctChoice:''
+ correctChoice:'a'
 
  let question9 = new Question (
    'Who was the oldest player to score 50+ points in a game?'
@@ -111,7 +104,7 @@ correctChoice:''
    'Grant Hill'
    'Steve Nash'
  );
- correctChoice: ''
+ correctChoice: 'b'
 
  let question10 = new Question(
    'Which NBA player is featured in a Super Nintendo game called Combat Basketball?'
@@ -129,7 +122,7 @@ let question11 = new Question(
   'Ray Allen'
   'James Harden'
 );
-correctChoice:''
+correctChoice:'b'
 
 let question12 = new Question(
   'Who is the famouse Russian NBA player?'
@@ -138,7 +131,7 @@ let question12 = new Question(
   'Roman Abramovich'
   'Aleksandr Ovechkin'
 );
-correctChoice:''
+correctChoice:'b'
 
 let question13 = new Question(
   'What NBA player has won the most league MVPs?'
@@ -147,7 +140,7 @@ let question13 = new Question(
   'Michael Jordan'
   'Kareem Abdul-Jabbar'
 );
-correctChoice:''
+correctChoice:'d'
 
 let question14 = new Question(
   'How many points did LeBron James score in his first NBA game?'
@@ -165,7 +158,7 @@ let question15 = new Question(
   'Miami Heat'
   'New York Knicks'
 );
-correctChoice:''
+correctChoice:'d'
 
 let question16 = new Question(
   'How many NBA championships did the Lakers win during the 1960s?'
@@ -178,7 +171,7 @@ correctChoice:''
 
 let question17 = new Question(
   'What unfortunate NBA record do the Brooklyn Nets hold?'
-  'fewest rebounds ina game'
+  'fewest rebounds in a game'
   'fewest steals in a game'
   'fewest field goals in a game'
   'fewest assists in a game'
@@ -195,29 +188,35 @@ let question18 = new Question(
 correctChoice:'Kobe Bryant'
 
 // players
-class Player{
-  constructor(name, points)
-}
+// class Player{
+//   constructor(name, points)
+// }
+//
+// BrooklynNets extends class Player
+//
+//
+// AtlantaHawks extends class Player
+const player1 = document.querySelector('#player1')
+const player2 = document.querySelector('#player2')
+player1.addEventListener('click', function(){
+  player1.classList.add('hidden')
+  console.log('clicked player1, start game' )
+  //// here logic to start game
+})
 
-BrooklynNets extends class Player
-
-
-AtlantaHawks extends class Player
-
+player2.addEventListener('click', function(){
+  player2.classList.add('hidden')
+  console.log('clicked player2, start game' )
+  /// here logic to start game
+})
 
 
 // create an order of questions
 Questions.forEach(
   (currentQuestion, questionNumber) =>{
-
 const choice = [];
-
-  }
+ }
 )
-myQuestion.forEach( (currentQuestion, questionNumber) => {
-
-});
-
 const answers = [ a, c, d, c, a, b, a, ....];
 
 // let questionArray = [
@@ -241,19 +240,7 @@ const answers = [ a, c, d, c, a, b, a, ....];
 //   question18
 // ];
 //
-// let questionTracker = [];
-//
-// //// event listeners for 2nd player?
-// startGameButton.addEventListener('click', generateQuestion);
-// correctField.addEventListener('click', playerChoice);
-// wrongField1.addEventListener('click', playerOut);
-// wrongField2.addEventListener('click', playerOut);
-// wrongField3.addEventListener('click', playerOut);
-// restartButton.addEventListener('click', restartGame);
-// startGameButton.addEventListener('click', startGame);
-// restartGame.addEventListener('click', restartGame);
-//
-// ///// generate questions function for 2nd player?
+
 //
 
 //if random question number has been used before the same then rerun random question again
@@ -271,23 +258,21 @@ previousQuestions.push(currentQuestionNumber);
 // if you finish player 1 start player 2
 
 // questionField.innerHTML = questionArray[currentQuestionNumber].question;
-// correctField.innerHTML = questionArray[currentQuestionNumber].correct;
-// wrongField1.innerHTML = questionArray[currentQuestionNumber].wrong1;
-// wrongField2.innerHTML = questionArray[currentQuestionNumber].wrong2;
-// wrongField3.innerHTML = questionArray[currentQuestionNumber].wrong3;
 // questionTracker.push(questionArray[currentQuestionNumber]);
 // questionArray.splice(currentQuestionNumber, 1);
 //
 //  }
 
 
-
-
 // assign points to the questions (2 points each correct question)
 const answers = triviaBox.querySelectorAll('.answers');
 
-// keep track of users answers
+//keep track of players answers
+let playerAnswer = '';
 let numCorrect = 0;
+
+//
+for (var i=0; i<questions.length; i++)
 
 // find selected answer
 const answer = answer[questionNumber];
@@ -296,9 +281,6 @@ const playerAnswer = (answer.querySelector(selector) || {}).value;
 
 
 // if one of the players gets 21 points first => win conditions and finish the game
-
-
-
 
 // if answer is correct
 if(playerAnswer === currentQuestion.currentAnswer){
@@ -358,8 +340,6 @@ var interval = setInterval(myTimer, 1000);
     alert('You are out of time!');
   }
 }
-
-// random choice for player2
 
 
 // show score button for player2
