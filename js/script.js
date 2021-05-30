@@ -27,6 +27,7 @@ function startGame(){
   startButton.classList.add('hide')
   questionContainerElement.classList.remove('hide')
   // generateNextQuestion()
+showQuestion(questionArray);
 }
 
 
@@ -43,20 +44,23 @@ previousQuestions.push(currentQuestionNumber)
 }
 
 // function to show Questions
-function showQuestion(question){
-  questionElement.innerText = question.question
-  question.answers.forEach(answer => {
-    const button = document.createElement('button')
-    button.innerText = answer.text
-    button.classList.add('btn')
-    if (answer.correct){
-      button.dataset.correct = answer.correct
-    }
-    button.addEventListener('click', selectAnswer)
-    answerButtonsElement.appendChild(button)
-  })
-}
-
+function showQuestion(questions){
+  console.log("yoyoyoyo");
+  const button = document.createElement('button');
+  let first = Math.floor(Math.random() * questions.length);// random #
+  questionElement.innerText =questions[first].question;
+  for(const [key, value] of Object.entries(questions[first].choices)){
+    const button = document.createElement('button');
+        document.body.appendChild(button);
+        button.innerText = value;
+  }
+  //   if (answer.correct){
+  //     button.dataset.correct = answer.correct
+  //   }
+  //   button.addEventListener('click', selectAnswer);
+  //   answerButtonsElement.appendChild(button);
+  // });
+};
 // function resetState(){
 // clearStatusClass(document.body)
 //   nextButton.classList.add('hide')
@@ -90,6 +94,16 @@ function setStatusClass(element, correct){
     element.classList.add('wrong')
   }
 }
+
+const pic1 =
+document.querySelector(".pictures")
+
+const pic2 =
+document.querySelector('#disappear')
+
+pic1.addEventListener('click', function(){
+  pic1.classList.toggle('hidden')
+})
 
 
 class Question {
@@ -294,9 +308,7 @@ const questionArray = [
   question15,
   question16,
 ];
-//
-// }
-// ]
+
 
 // players
 // class Player{
@@ -308,20 +320,21 @@ const questionArray = [
 //
 // AtlantaHawks extends class Player
 
-const player1 = document.querySelector('#player1')
-const player2 = document.querySelector('#player2')
-player1.addEventListener('click', function(){
-  player1.classList.add('hidden')
-  console.log('clicked player1, start game' )
-  startGame();
-})
 
-player2.addEventListener('click', function(){
-  player2.classList.add('hidden')
-  console.log('clicked player2, start game')
-  startGame();
-  /// here logic to start game
-})
+// const player1 = document.querySelector('#player1')
+// const player2 = document.querySelector('#player2')
+// player1.addEventListener('click', function(){
+//   player1.classList.add('hidden')
+//   console.log('clicked player1, start game' )
+//   startGame();
+// })
+//
+// player2.addEventListener('click', function(){
+//   player2.classList.add('hidden')
+//   console.log('clicked player2, start game')
+//   startGame();
+//   /// here logic to start game
+// })
 
 
 

@@ -20,6 +20,13 @@ body {
 
 }
 
+.pictures{
+  background-color: : red;
+}
+.hidden{
+  display: none;
+}
+
 body.correct{
   --hue: var(--hue-correct);
 }
