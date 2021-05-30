@@ -30,6 +30,14 @@ function startGame(){
 showQuestion(questionArray);
 }
 
+// next button
+function next(){
+  concole.log(generateNextQuestion())
+  nextButton.classList.add('hide')
+  questionContainerElement.classList.remote()
+}
+
+
 
 // function of random questions
 function generateNextQuestion(){
@@ -45,15 +53,16 @@ previousQuestions.push(currentQuestionNumber)
 
 // function to show Questions
 function showQuestion(questions){
-  console.log("yoyoyoyo");
-  const button = document.createElement('button');
   let first = Math.floor(Math.random() * questions.length);// random #
   questionElement.innerText =questions[first].question;
   for(const [key, value] of Object.entries(questions[first].choices)){
     const button = document.createElement('button');
-        document.body.appendChild(button);
+        document.body.appendChild(button)
         button.innerText = value;
+        button.setAttribute("data-correctChoice", questions[first].correctChoice)
+        button.addEventListener('click', selectAnswer);
   }
+
   //   if (answer.correct){
   //     button.dataset.correct = answer.correct
   //   }
@@ -61,6 +70,20 @@ function showQuestion(questions){
   //   answerButtonsElement.appendChild(button);
   // });
 };
+
+// if answer is correct
+// if(playerAnswer === currentQuestion.currentAnswer){
+//   numCorrect+++
+//   }
+// // // color the answer green
+// answer[questionNumber].style.color = 'green';
+//
+// // // if answer is wrong
+// else{
+//   answer[questionNumber].style.color = 'red';
+// }
+// }
+// });
 // function resetState(){
 // clearStatusClass(document.body)
 //   nextButton.classList.add('hide')
@@ -68,42 +91,50 @@ function showQuestion(questions){
 //     answerButtonsElement.removeChild(answerButtonsElement)
 //   }
 // }
+// ?? if statenet in if answe is correct --- chtobi piemnyalo tsvet na green ili red
+// ?? varianti otvetov chtobi rabotali
+// ??next button
+// ??start buttons
+// ??
 
 
 function selectAnswer(e){
   const selectedButton = e.target
-  const correct = selectedButton.dataset.correctChoice
+  console.log(selectedButton);
+  const correct = selectedButton.dataset
+  //const correct = questionArray[1].correctChoice;
+  console.log(correct);
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button =>{
-    setStatusClass(button,button.dataset.correct)
+    setStatusClass(button, button.dataset.correct)
   })
-  if (randomQuestionNumber.length > currentQuestionNumber + 1) {
-    nextButton.classList.remove('hide')
-  } else {
-    startButton.innerText = "Restart"
-    startButton.classList.remove('hide')
-  }
-
+  // if (randomQuestionNumber.length > currentQuestionNumber + 1) {
+  //   nextButton.classList.remove('hide')
+  // } else {
+  //   startButton.innerText = "Restart"
+  //   startButton.classList.remove('hide')
+  // }
 }
-
+//
 function setStatusClass(element, correct){
-  clearStatusClass(element)
+//clearStatusClass(element)
   if (correct){
     element.classList.add('correct')
   } else{
     element.classList.add('wrong')
   }
 }
-
-const pic1 =
-document.querySelector(".pictures")
-
-const pic2 =
-document.querySelector('#disappear')
-
-pic1.addEventListener('click', function(){
-  pic1.classList.toggle('hidden')
-})
+//
+//
+// const pic1 =
+// document.querySelector(".pictures")
+//
+// const pic2 =
+// document.querySelector('#disappear')
+//
+// pic1.addEventListener('click', function(){
+//   pic1.classList.toggle('hidden')
+// })
 
 
 class Question {
@@ -338,10 +369,6 @@ const questionArray = [
 
 
 
-
-//if random question number has been used before the same then rerun random question again
-
-
 // if you finish player 1 start player 2
 
 // questionField.innerHTML = questionArray[currentQuestionNumber].question;
@@ -366,19 +393,7 @@ const questionArray = [
 //
 // // if one of the players gets 21 points first => win conditions and finish the game
 //
-// // if answer is correct
-// if(playerAnswer === currentQuestion.currentAnswer){
-//   numCorrect+++;
-// }
-// // color the answer green
-// answer[questionNumber].style.color = 'green';
 //
-// // if answer is wrong
-// else{
-//   answer[questionNumber].style.color = 'red';
-//
-// }
-// });
 //
 // //show number of correct answers and total scored
 // showGameResults.innerHTML = '${numCorrect} out of ${Questions.length}';
