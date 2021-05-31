@@ -13,7 +13,7 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 
 
 //event listeners
-startButton.addEventListener('click', start);
+startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', next);
 submitButton.addEventListener('click', submit);
 // submitButton.addEventListener('click', showGameResults);
