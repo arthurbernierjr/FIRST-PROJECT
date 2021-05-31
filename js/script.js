@@ -1,24 +1,23 @@
 // global varialbles
 const questionContainer = document.querySelector('.question');
 
-
 // question objects. reference to HTML
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
+const restartButton = document.getElementById('restart');
 const questionContainerElement = document.getElementById('question-container');
-// const randomQuestionNumber = currentQuestion
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
-
 // const showGameResults =document.getElementById('results');
 // const submitButton = document.getElementById('submit');
 
+
 //event listeners
-startButton.addEventListener('click', startGame);
-nextButton.addEventListener('click', () => {
-  // setNextQuestion()
-} )
+startButton.addEventListener('click', start);
+nextButton.addEventListener('click', next);
+submitButton.addEventListener('click', submit);
 // submitButton.addEventListener('click', showGameResults);
+
 
 
 // functions start,select
@@ -37,7 +36,20 @@ function next(){
   questionContainerElement.classList.remote()
 }
 
-
+// const BrooklynNets = document.querySelector('#BrooklynNetsImage')
+// const NewYorkKnicks = document.querySelector('#NewYorkKnicksImage')
+// BrooklynNets.addEventListener('click', function(){
+//   BrooklynNets.classList.add('hidden')
+//   console.log('clicked BrooklynNetsImage, start game' )
+//   startGame();
+// })
+//
+// BrooklynNets.addEventListener('click', function(){
+//   BrooklynNets.classList.add('hidden')
+//   console.log('clicked NewYorkKnicksImage, start game')
+//   startGame();
+//   /// here logic to start game
+// })
 
 // function of random questions
 function generateNextQuestion(){
@@ -339,34 +351,6 @@ const questionArray = [
   question15,
   question16,
 ];
-
-
-// players
-// class Player{
-//   constructor(name, points)
-// }
-//
-// BrooklynNets extends class Player
-//
-//
-// AtlantaHawks extends class Player
-
-
-// const player1 = document.querySelector('#player1')
-// const player2 = document.querySelector('#player2')
-// player1.addEventListener('click', function(){
-//   player1.classList.add('hidden')
-//   console.log('clicked player1, start game' )
-//   startGame();
-// })
-//
-// player2.addEventListener('click', function(){
-//   player2.classList.add('hidden')
-//   console.log('clicked player2, start game')
-//   startGame();
-//   /// here logic to start game
-// })
-
 
 
 // if you finish player 1 start player 2
